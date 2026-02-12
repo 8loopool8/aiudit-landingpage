@@ -68,7 +68,8 @@
 
 @layer utilities {
   .glass-card {
-    @apply bg-card/60 backdrop-blur-xl border border-glass-border/30 rounded-xl;
+    @apply bg-card/60 backdrop-blur-xl border rounded-xl;
+    border-color: hsl(var(--glass-border) / 0.3);
   }
 
   .glow-border {
