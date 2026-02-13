@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
-import { Shield, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import logo from "@/assets/logo.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,7 +22,9 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         <a href="#" className="flex items-center gap-2 group">
-          <Shield className="h-6 w-6 text-primary transition-transform group-hover:scale-110" />
+          <div className="h-8 w-8 rounded-full bg-primary/15 border border-primary/30 flex items-center justify-center">
+            <img src={logo} alt="Aiudit" className="h-5 w-5 object-contain" />
+          </div>
           <span className="text-lg font-bold tracking-tight text-foreground">
             ai<span className="text-primary">udit</span>
           </span>
