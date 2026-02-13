@@ -4,10 +4,30 @@ import { useState } from "react";
 
 const ContactSection = () => {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    formData.append("access_key", "e3497a6a-595c-4b11-a9de-b1b875e77641");
+
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await res.json();
+      if (data.success) {
+        setSubmitted(true);
+      }
+    } catch {
+      // silently handle
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -45,11 +65,15 @@ const ContactSection = () => {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="glass-card rounded-2xl p-8 space-y-5">
+              <input type="hidden" name="subject" value="New Contact from aiudit.tech" />
+              <input type="hidden" name="redirect" value="https://aiudit.lovable.app" />
+
               <div className="grid sm:grid-cols-2 gap-5">
                 <div>
                   <label className="text-sm font-medium text-foreground mb-1.5 block">Name</label>
                   <input
                     type="text"
+                    name="name"
                     required
                     maxLength={100}
                     className="w-full bg-secondary border border-border rounded-lg px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all"
@@ -57,9 +81,10 @@ const ContactSection = () => {
                   />
                 </div>
                 <div>
-                  <label className="text-sm font-medium text-foreground mb-1.5 block">Company</label>
+                  <label className="text-sm font-medium text-foreground mb-1.5 block">Company Name</label>
                   <input
                     type="text"
+                    name="company"
                     required
                     maxLength={100}
                     className="w-full bg-secondary border border-border rounded-lg px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all"
@@ -68,9 +93,10 @@ const ContactSection = () => {
                 </div>
               </div>
               <div>
-                <label className="text-sm font-medium text-foreground mb-1.5 block">Email</label>
+                <label className="text-sm font-medium text-foreground mb-1.5 block">Company Email</label>
                 <input
                   type="email"
+                  name="email"
                   required
                   maxLength={255}
                   className="w-full bg-secondary border border-border rounded-lg px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all"
@@ -78,21 +104,25 @@ const ContactSection = () => {
                 />
               </div>
               <div>
-                <label className="text-sm font-medium text-foreground mb-1.5 block">Message</label>
-                <textarea
+                <label className="text-sm font-medium text-foreground mb-1.5 block">Compliance Interest</label>
+                <select
+                  name="compliance_interest"
                   required
-                  maxLength={1000}
-                  rows={4}
-                  className="w-full bg-secondary border border-border rounded-lg px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all resize-none"
-                  placeholder="Tell us about your compliance needs..."
-                />
+                  className="w-full bg-secondary border border-border rounded-lg px-4 py-2.5 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all"
+                >
+                  <option value="">Select area of interest</option>
+                  <option value="GAMP5">GAMP5</option>
+                  <option value="EU AI Act">EU AI Act</option>
+                  <option value="FDA 21 CFR">FDA 21 CFR</option>
+                </select>
               </div>
               <button
                 type="submit"
-                className="w-full bg-primary text-primary-foreground font-semibold py-3 rounded-lg hover:bg-primary/90 transition-colors flex items-center justify-center gap-2"
+                disabled={loading}
+                className="w-full bg-primary text-primary-foreground font-semibold py-3 rounded-lg hover:bg-primary/90 transition-colors flex items-center justify-center gap-2 disabled:opacity-50"
               >
                 <Send className="h-4 w-4" />
-                Send Inquiry
+                {loading ? "Sending..." : "Send Inquiry"}
               </button>
             </form>
           )}

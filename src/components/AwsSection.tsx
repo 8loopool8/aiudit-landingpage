@@ -17,14 +17,14 @@ const AwsSection = () => {
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-medium mb-6">
                 <Cloud className="h-3.5 w-3.5" />
-                Cloud-Native
+                Cloud-Native Infrastructure
               </div>
               <h2 className="text-3xl font-bold text-foreground mb-4">
                 Built on AWS
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-6">
-                Optimized for cloud-native deployment with enterprise-grade security, auto-scaling, 
-                and full data residency control. Leverage AWS Activate credits to get started.
+                Optimized for cloud-native deployment with enterprise-grade security, auto-scaling,
+                and full data residency control across global regions.
               </p>
               <div className="space-y-3">
                 {[
