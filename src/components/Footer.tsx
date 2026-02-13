@@ -10,8 +10,8 @@ const Footer = () => {
             ai<span className="text-primary">udit</span>
           </span>
         </div>
-        <p className="text-sm text-muted-foreground">
-          © {new Date().getFullYear()} aiudit. AI-Driven Compliance for Regulated Industries.
+        <p className="text-sm text-muted-foreground text-center">
+          © {new Date().getFullYear()} Aiudit Systems. Sovereign AI Compliance Infrastructure — Remote-First, Global Standard.
         </p>
       </div>
     </footer>

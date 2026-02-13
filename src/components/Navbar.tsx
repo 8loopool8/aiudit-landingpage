@@ -8,7 +8,7 @@ const Navbar = () => {
   const links = [
     { label: "Architecture", href: "#engine" },
     { label: "Features", href: "#features" },
-    { label: "AWS", href: "#aws" },
+    { label: "Infrastructure", href: "#aws" },
     { label: "Contact", href: "#contact" },
   ];
 
@@ -27,7 +27,6 @@ const Navbar = () => {
           </span>
         </a>
 
-        {/* Desktop */}
         <div className="hidden md:flex items-center gap-8">
           {links.map((link) => (
             <a
@@ -46,7 +45,6 @@ const Navbar = () => {
           </a>
         </div>
 
-        {/* Mobile toggle */}
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="md:hidden text-muted-foreground"
@@ -55,7 +53,6 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile menu */}
       {isOpen && (
         <motion.div
           initial={{ opacity: 0, height: 0 }}

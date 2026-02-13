@@ -27,16 +27,16 @@ const features = [
     span: "md:col-span-2",
   },
   {
+    icon: Globe,
+    title: "Data Residency",
+    description: "Full control over data sovereignty with region-specific deployment and compliance guarantees.",
+    span: "md:col-span-2",
+  },
+  {
     icon: BarChart3,
     title: "Compliance Scoring",
     description: "AI-generated compliance scores with granular breakdowns per regulation.",
     span: "",
-  },
-  {
-    icon: Globe,
-    title: "Data Residency",
-    description: "Full control over data sovereignty with region-specific deployment options.",
-    span: "md:col-span-2",
   },
 ];
 

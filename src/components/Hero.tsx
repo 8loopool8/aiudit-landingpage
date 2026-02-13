@@ -4,7 +4,6 @@ import { ArrowRight, ShieldCheck, Cpu } from "lucide-react";
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center section-padding pt-32 overflow-hidden">
-      {/* Background effects */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px]" />
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
@@ -17,7 +16,6 @@ const Hero = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="max-w-3xl"
         >
-          {/* Badge */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -29,13 +27,13 @@ const Hero = () => {
           </motion.div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] mb-6">
-            <span className="text-foreground">AI-Driven Compliance</span>
+            <span className="text-foreground">Sovereign AI Compliance</span>
             <br />
-            <span className="gradient-text">for Regulated Industries.</span>
+            <span className="gradient-text">Infrastructure for Global Life Sciences.</span>
           </h1>
 
           <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed mb-10 max-w-2xl">
-            Seamlessly transition from GAMP5 manufacturing guidelines to Clinical Studies. 
+            Seamlessly transition from GAMP5 manufacturing guidelines to Clinical Studies.
             Auditing powered by a modular{" "}
             <span className="text-foreground font-medium">Law-Interface architecture</span>.
           </p>
@@ -52,13 +50,12 @@ const Hero = () => {
               href="#contact"
               className="inline-flex items-center justify-center gap-2 glass-card px-6 py-3.5 font-medium text-foreground hover:bg-secondary transition-all group"
             >
-              Get AWS Activate Demo
+              Request Enterprise Demo
               <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </a>
           </div>
         </motion.div>
 
-        {/* Floating decoration */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
