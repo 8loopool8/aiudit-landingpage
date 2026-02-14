@@ -56,6 +56,16 @@ const Hero = () => {
                 <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </a>
             </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+              className="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/40 bg-primary/5 text-sm font-medium text-foreground"
+            >
+              <span className="text-green-400">✅</span>
+              <span>EUSAIR Approved</span>
+            </motion.div>
           </motion.div>
 
           {/* Logo showcase */}
