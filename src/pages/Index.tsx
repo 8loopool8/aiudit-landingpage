@@ -5,6 +5,7 @@ import EngineSection from "@/components/EngineSection";
 import FeaturesGrid from "@/components/FeaturesGrid";
 import CertificateSection from "@/components/CertificateSection";
 import AwsSection from "@/components/AwsSection";
+import TrustCenter from "@/components/TrustCenter";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 
@@ -18,6 +19,7 @@ const Index = () => {
       <FeaturesGrid />
       <CertificateSection />
       <AwsSection />
+      <TrustCenter />
       <ContactSection />
       <Footer />
     </div>
