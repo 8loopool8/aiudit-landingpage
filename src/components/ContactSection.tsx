@@ -5,6 +5,7 @@ import { useState } from "react";
 const ContactSection = () => {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [complianceInterest, setComplianceInterest] = useState("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -107,15 +108,31 @@ const ContactSection = () => {
                 <label className="text-sm font-medium text-foreground mb-1.5 block">Compliance Interest</label>
                 <select
                   name="compliance_interest"
-                  required
+                  required={complianceInterest !== "Other"}
+                  value={complianceInterest}
+                  onChange={(e) => setComplianceInterest(e.target.value)}
                   className="w-full bg-secondary border border-border rounded-lg px-4 py-2.5 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all"
                 >
                   <option value="">Select area of interest</option>
                   <option value="GAMP5">GAMP5</option>
                   <option value="EU AI Act">EU AI Act</option>
                   <option value="FDA 21 CFR">FDA 21 CFR</option>
+                  <option value="Other">Other</option>
                 </select>
               </div>
+              {complianceInterest === "Other" && (
+                <div>
+                  <label className="text-sm font-medium text-foreground mb-1.5 block">Specify Regulation / Law</label>
+                  <input
+                    type="text"
+                    name="compliance_interest_other"
+                    required
+                    maxLength={200}
+                    className="w-full bg-secondary border border-border rounded-lg px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all"
+                    placeholder="e.g. ISO 13485, MDR 2017/745..."
+                  />
+                </div>
+              )}
               <button
                 type="submit"
                 disabled={loading}
