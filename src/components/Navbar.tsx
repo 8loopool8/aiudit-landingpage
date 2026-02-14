@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import logo from "@/assets/logo.png";
 
 const Navbar = () => {
@@ -9,7 +10,8 @@ const Navbar = () => {
   const links = [
     { label: "Architecture", href: "#engine" },
     { label: "Features", href: "#features" },
-    { label: "Infrastructure", href: "#aws" },
+    { label: "Library", href: "/library" },
+    { label: "Dashboard", href: "/dashboard" },
     { label: "Contact", href: "#contact" },
   ];
 
@@ -21,25 +23,35 @@ const Navbar = () => {
       className="fixed top-0 left-0 right-0 z-50 glass-card border-b border-border/40 backdrop-blur-xl"
     >
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="#" className="flex items-center gap-2 group">
+        <Link to="/" className="flex items-center gap-2 group">
           <div className="h-10 w-10 rounded-full bg-primary flex items-center justify-center overflow-hidden shadow-md">
             <img src={logo} alt="Aiudit" className="h-8 w-8 object-contain" />
           </div>
           <span className="text-lg font-bold tracking-tight text-foreground">
             ai<span className="text-primary">udit</span>
           </span>
-        </a>
+        </Link>
 
         <div className="hidden md:flex items-center gap-8">
-          {links.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              {link.label}
-            </a>
-          ))}
+          {links.map((link) =>
+            link.href.startsWith("/") ? (
+              <Link
+                key={link.href}
+                to={link.href}
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                {link.label}
+              </Link>
+            ) : (
+              <a
+                key={link.href}
+                href={link.href}
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                {link.label}
+              </a>
+            )
+          )}
           <a
             href="#contact"
             className="text-sm font-medium bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors"
@@ -63,16 +75,27 @@ const Navbar = () => {
           className="md:hidden border-t border-border/40 bg-card/95 backdrop-blur-xl"
         >
           <div className="px-6 py-4 flex flex-col gap-3">
-            {links.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors py-2"
-              >
-                {link.label}
-              </a>
-            ))}
+            {links.map((link) =>
+              link.href.startsWith("/") ? (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors py-2"
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors py-2"
+                >
+                  {link.label}
+                </a>
+              )
+            )}
             <a
               href="#contact"
               onClick={() => setIsOpen(false)}
