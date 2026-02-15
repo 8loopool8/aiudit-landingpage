@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Shield, FileText, Scale, Brain, Database, Lock, X, ChevronRight } from "lucide-react";
+import { Shield, FileText, Scale, Brain, Database, Lock, X, ChevronRight, ArrowLeft } from "lucide-react";
 import { Switch } from "@/components/ui/switch";
+import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -87,8 +88,11 @@ const RegulatoryLibrary = () => {
       <Navbar />
       <section className="section-padding pt-32">
         <div className="max-w-7xl mx-auto">
+          <Link to="/" className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors mb-6">
+            <ArrowLeft className="h-4 w-4" />
+            Back to Home
+          </Link>
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="mb-12"
           >
