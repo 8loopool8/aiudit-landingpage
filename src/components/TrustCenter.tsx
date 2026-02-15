@@ -68,7 +68,7 @@ const TrustCenter = () => {
             The Sovereignty <span className="gradient-text">Proof</span>
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto text-lg">
-            Your data never leaves your infrastructure. Here's the architecture that guarantees it.
+            Your data never leaves your infrastructure. GDPR-Compliant Local Processing guaranteed.
           </p>
         </motion.div>
 
@@ -128,7 +128,7 @@ const TrustCenter = () => {
           <div className="mt-8 text-center">
             <p className="text-xs text-muted-foreground flex items-center justify-center gap-2">
               <Lock className="h-3 w-3 text-green-400" />
-              No data exits the client infrastructure at any point in the pipeline.
+              GDPR-Compliant Local Processing — No data exits the client infrastructure at any point in the pipeline.
             </p>
           </div>
         </motion.div>
