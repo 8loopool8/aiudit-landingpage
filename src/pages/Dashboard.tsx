@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Shield, AlertTriangle, CheckCircle, Server, FileText, Download } from "lucide-react";
+import { Shield, AlertTriangle, CheckCircle, Server, FileText, Download, Loader2, ArrowLeft } from "lucide-react";
+import { Link } from "react-router-dom";
+import { useToast } from "@/hooks/use-toast";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -70,12 +72,31 @@ const severityColors: Record<string, string> = {
 
 const Dashboard = () => {
   const [expandedRow, setExpandedRow] = useState<string | null>(null);
+  const [isExporting, setIsExporting] = useState(false);
+  const { toast } = useToast();
+
+  const handleExportPdf = () => {
+    setIsExporting(true);
+    setTimeout(() => {
+      setIsExporting(false);
+      toast({
+        title: "✅ Report Successfully Generated",
+        description: "Encrypted with Blockchain Hash: 0x55ea3f…b7c9d2",
+      });
+    }, 2000);
+  };
 
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
       <section className="section-padding pt-32">
         <div className="max-w-7xl mx-auto">
+          {/* Back Link */}
+          <Link to="/" className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors mb-6">
+            <ArrowLeft className="h-4 w-4" />
+            Back to Home
+          </Link>
+
           {/* Top Bar */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-10">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
@@ -130,9 +151,22 @@ const Dashboard = () => {
           >
             <div className="flex items-center justify-between p-5 border-b border-border/40">
               <h2 className="text-lg font-semibold text-foreground">Audit Findings</h2>
-              <button className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors">
-                <Download className="h-4 w-4" />
-                Export PDF
+              <button
+                onClick={handleExportPdf}
+                disabled={isExporting}
+                className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors disabled:opacity-60"
+              >
+                {isExporting ? (
+                  <>
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                    Generating Sovereign Report…
+                  </>
+                ) : (
+                  <>
+                    <Download className="h-4 w-4" />
+                    Export PDF
+                  </>
+                )}
               </button>
             </div>
             <div className="overflow-x-auto">

@@ -1,19 +1,45 @@
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useState, useCallback } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "@/assets/logo.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const links = [
-    { label: "Architecture", href: "#engine" },
-    { label: "Features", href: "#features" },
+    { label: "Architecture", href: "/#engine" },
+    { label: "Features", href: "/#features" },
     { label: "Library", href: "/library" },
     { label: "Dashboard", href: "/dashboard" },
-    { label: "Contact", href: "#contact" },
+    { label: "Contact", href: "/#contact" },
   ];
+
+  const handleNavClick = useCallback(
+    (href: string) => {
+      setIsOpen(false);
+      if (href.startsWith("/#")) {
+        const hash = href.slice(1); // e.g. "#engine"
+        if (location.pathname === "/") {
+          // Already on home, just scroll
+          const el = document.querySelector(hash);
+          el?.scrollIntoView({ behavior: "smooth" });
+        } else {
+          // Navigate home then scroll
+          navigate("/");
+          setTimeout(() => {
+            const el = document.querySelector(hash);
+            el?.scrollIntoView({ behavior: "smooth" });
+          }, 100);
+        }
+      } else {
+        navigate(href);
+      }
+    },
+    [location.pathname, navigate]
+  );
 
   return (
     <motion.nav
@@ -33,31 +59,21 @@ const Navbar = () => {
         </Link>
 
         <div className="hidden md:flex items-center gap-8">
-          {links.map((link) =>
-            link.href.startsWith("/") ? (
-              <Link
-                key={link.href}
-                to={link.href}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
-                {link.label}
-              </Link>
-            ) : (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
-                {link.label}
-              </a>
-            )
-          )}
-          <a
-            href="#contact"
+          {links.map((link) => (
+            <button
+              key={link.href}
+              onClick={() => handleNavClick(link.href)}
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors bg-transparent border-none cursor-pointer"
+            >
+              {link.label}
+            </button>
+          ))}
+          <button
+            onClick={() => handleNavClick("/#contact")}
             className="text-sm font-medium bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors"
           >
             Request Demo
-          </a>
+          </button>
         </div>
 
         <button
@@ -75,34 +91,21 @@ const Navbar = () => {
           className="md:hidden border-t border-border/40 bg-card/95 backdrop-blur-xl"
         >
           <div className="px-6 py-4 flex flex-col gap-3">
-            {links.map((link) =>
-              link.href.startsWith("/") ? (
-                <Link
-                  key={link.href}
-                  to={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors py-2"
-                >
-                  {link.label}
-                </Link>
-              ) : (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors py-2"
-                >
-                  {link.label}
-                </a>
-              )
-            )}
-            <a
-              href="#contact"
-              onClick={() => setIsOpen(false)}
+            {links.map((link) => (
+              <button
+                key={link.href}
+                onClick={() => handleNavClick(link.href)}
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors py-2 text-left bg-transparent border-none cursor-pointer"
+              >
+                {link.label}
+              </button>
+            ))}
+            <button
+              onClick={() => handleNavClick("/#contact")}
               className="text-sm font-medium bg-primary text-primary-foreground px-4 py-2 rounded-lg text-center"
             >
               Request Demo
-            </a>
+            </button>
           </div>
         </motion.div>
       )}
