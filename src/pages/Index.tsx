@@ -12,6 +12,7 @@ import Footer from "@/components/Footer";
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+      <h1 className="sr-only">Sovereign AI Audit Solutions for European and Global Pharma Compliance</h1>
       <Navbar />
       <Hero />
       <SustainableSection />
