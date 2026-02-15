@@ -22,7 +22,7 @@ const mockFindings: Finding[] = [
     title: "Audit trail not enabled for user management module",
     severity: "critical",
     confidence: 98.5,
-    regulationRef: "21 CFR 11.10(e)",
+    regulationRef: "21 CFR 11.10(c)",
     suggestedCapa: "Enable immutable audit trail logging for all CRUD operations in the user management module. Implement timestamp, user ID, and before/after value capture.",
     agents: { auditor: true, lawyer: true, engineer: true },
   },
