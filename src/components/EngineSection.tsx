@@ -20,8 +20,11 @@ const EngineSection = () => {
             <span className="text-foreground">The </span>
             <span className="gradient-text">Engine</span>
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto text-lg">
+          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
             A modular RAG system that decouples regulatory knowledge from the user interface.
+          </p>
+          <p className="text-sm text-primary/80 mt-3 font-medium">
+            GDPR-Compliant Local Processing via Isolated Mistral 7B Containers
           </p>
         </motion.div>
 

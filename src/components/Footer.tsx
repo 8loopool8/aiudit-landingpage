@@ -17,6 +17,9 @@ const Footer = () => {
           <p className="text-xs text-muted-foreground/60 mt-1">
             © {new Date().getFullYear()} Aiudit Systems. Remote-First, Global Standard.
           </p>
+          <p className="text-xs text-muted-foreground/40 mt-2 max-w-lg mx-auto">
+            Aiudit provides sovereign compliance infrastructure. Final certification is the responsibility of authorized human auditors.
+          </p>
         </div>
       </div>
     </footer>
