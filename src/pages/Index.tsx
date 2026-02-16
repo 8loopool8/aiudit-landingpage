@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import StrategicServicesSection from "@/components/StrategicServicesSection";
 import SustainableSection from "@/components/SustainableSection";
 import EngineSection from "@/components/EngineSection";
 import FeaturesGrid from "@/components/FeaturesGrid";
@@ -15,6 +16,7 @@ const Index = () => {
       <h1 className="sr-only">Sovereign AI Audit Solutions for European and Global Pharma Compliance</h1>
       <Navbar />
       <Hero />
+      <StrategicServicesSection />
       <SustainableSection />
       <EngineSection />
       <FeaturesGrid />
