@@ -10,10 +10,9 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const links = [
-    { label: "Architecture", href: "/#engine" },
-    { label: "Features", href: "/#features" },
-    { label: "Library", href: "/library" },
-    { label: "Dashboard", href: "/dashboard" },
+    { label: "How it Works", href: "/#audit" },
+    { label: "About", href: "/#about" },
+    { label: "Security", href: "/#security" },
     { label: "Contact", href: "/#contact" },
   ];
 
@@ -21,13 +20,11 @@ const Navbar = () => {
     (href: string) => {
       setIsOpen(false);
       if (href.startsWith("/#")) {
-        const hash = href.slice(1); // e.g. "#engine"
+        const hash = href.slice(1);
         if (location.pathname === "/") {
-          // Already on home, just scroll
           const el = document.querySelector(hash);
           el?.scrollIntoView({ behavior: "smooth" });
         } else {
-          // Navigate home then scroll
           navigate("/");
           setTimeout(() => {
             const el = document.querySelector(hash);
@@ -46,15 +43,15 @@ const Navbar = () => {
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="fixed top-0 left-0 right-0 z-50 glass-card border-b border-border/40 backdrop-blur-xl"
+      className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-border/40"
     >
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 group">
-          <div className="h-10 w-10 rounded-full bg-gold flex items-center justify-center overflow-hidden shadow-md">
-            <img src={logo} alt="Aiudit" className="h-8 w-8 object-contain" />
+        <Link to="/" className="flex items-center gap-2.5 group">
+          <div className="h-9 w-9 rounded-full bg-gold flex items-center justify-center overflow-hidden shadow-sm">
+            <img src={logo} alt="Aiudit" className="h-7 w-7 object-contain" />
           </div>
           <span className="text-lg font-bold tracking-tight text-foreground">
-            ai<span className="text-primary">udit</span>
+            ai<span className="gradient-text">udit</span>
           </span>
         </Link>
 
@@ -69,10 +66,10 @@ const Navbar = () => {
             </button>
           ))}
           <button
-            onClick={() => handleNavClick("/#contact")}
-            className="text-sm font-medium bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors"
+            onClick={() => handleNavClick("/#audit")}
+            className="text-sm font-semibold bg-primary text-primary-foreground px-5 py-2 rounded-lg hover:bg-primary/90 transition-colors shadow-sm"
           >
-            Request Demo
+            Start 48h Audit
           </button>
         </div>
 
@@ -88,7 +85,7 @@ const Navbar = () => {
         <motion.div
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: "auto" }}
-          className="md:hidden border-t border-border/40 bg-card/95 backdrop-blur-xl"
+          className="md:hidden border-t border-border/40 bg-white/95 backdrop-blur-xl"
         >
           <div className="px-6 py-4 flex flex-col gap-3">
             {links.map((link) => (
@@ -101,10 +98,10 @@ const Navbar = () => {
               </button>
             ))}
             <button
-              onClick={() => handleNavClick("/#contact")}
-              className="text-sm font-medium bg-primary text-primary-foreground px-4 py-2 rounded-lg text-center"
+              onClick={() => handleNavClick("/#audit")}
+              className="text-sm font-semibold bg-primary text-primary-foreground px-4 py-2.5 rounded-lg text-center"
             >
-              Request Demo
+              Start 48h Audit
             </button>
           </div>
         </motion.div>

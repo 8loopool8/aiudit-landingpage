@@ -1,18 +1,20 @@
-import { Shield } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const Footer = () => {
   return (
-    <footer className="border-t border-border/40 px-6 py-12">
+    <footer className="border-t border-border/40 px-6 py-12 bg-white">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-        <div className="flex items-center gap-2">
-          <Shield className="h-5 w-5 text-primary" />
+        <div className="flex items-center gap-2.5">
+          <div className="h-8 w-8 rounded-full bg-gold flex items-center justify-center overflow-hidden">
+            <img src={logo} alt="Aiudit" className="h-6 w-6 object-contain" />
+          </div>
           <span className="font-bold text-foreground">
-            ai<span className="text-primary">udit</span>
+            ai<span className="gradient-text">udit</span>
           </span>
         </div>
         <div className="text-center">
           <p className="text-sm text-muted-foreground">
-            Aiudit — Helping Global Life Sciences transition to Sovereign AI Governance.
+            Sovereign AI Compliance Infrastructure for Global Life Sciences.
           </p>
           <p className="text-xs text-muted-foreground/60 mt-1">
             © {new Date().getFullYear()} Aiudit Systems. Remote-First, Global Standard.
