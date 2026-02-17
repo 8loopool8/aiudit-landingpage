@@ -50,7 +50,7 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 group">
-          <div className="h-10 w-10 rounded-full bg-primary flex items-center justify-center overflow-hidden shadow-md">
+          <div className="h-10 w-10 rounded-full bg-gold flex items-center justify-center overflow-hidden shadow-md">
             <img src={logo} alt="Aiudit" className="h-8 w-8 object-contain" />
           </div>
           <span className="text-lg font-bold tracking-tight text-foreground">
