@@ -52,8 +52,8 @@
     --navy: 153 40% 12%;
     --navy-light: 153 30% 22%;
     --slate-dark: 120 10% 40%;
-    --gold: 153 55% 32%;
-    --gold-light: 152 44% 45%;
+    --gold: 43 74% 49%;
+    --gold-light: 43 74% 64%;
   }
 }
 
@@ -79,7 +79,7 @@
   }
 
   .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-[hsl(152,44%,45%)] to-primary;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[hsl(43,74%,49%)] via-[hsl(43,74%,64%)] to-[hsl(43,74%,49%)];
   }
 
   .section-padding {

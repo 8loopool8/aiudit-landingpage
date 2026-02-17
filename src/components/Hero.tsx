@@ -82,7 +82,7 @@ const Hero = () => {
             className="hidden lg:flex lg:col-span-2 items-center justify-center"
           >
             <div className="relative">
-              <div className="w-52 h-52 rounded-full bg-primary border border-primary/40 flex items-center justify-center animate-float shadow-lg shadow-primary/20">
+              <div className="w-52 h-52 rounded-full bg-gold border border-gold-light/40 flex items-center justify-center animate-float shadow-lg shadow-gold/20">
                 <img src={logo} alt="Aiudit" className="h-32 w-32 object-contain" />
               </div>
               <div className="absolute -inset-4 border border-primary/10 rounded-full -z-10" />
